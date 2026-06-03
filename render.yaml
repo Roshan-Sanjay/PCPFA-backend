@@ -1,0 +1,27 @@
+services:
+  - type: web_service
+    name: PCPFA-backend
+    env: node
+    plan: starter
+    region: oregon
+    branch: main
+    buildCommand: npm install
+    startCommand: node src/server.js
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: EXTERNAL_API_BASE_URL
+        value: https://t4e-testserver.onrender.com/api
+      - key: EXTERNAL_DATASET_SET
+        value: setA
+      - key: FRONTEND_URL
+        value: https://your-frontend-url.onrender.com
+      - key: EXTERNAL_STUDENT_ID
+        value: E0123020
+      - key: MONGO_URI
+        secure: true
+      - key: JWT_SECRET
+        secure: true
+      - key: EXTERNAL_STUDENT_PASSWORD
+        secure: true
